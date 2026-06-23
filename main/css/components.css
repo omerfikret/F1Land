@@ -1,0 +1,306 @@
+/* ============================================
+   YEAR SELECT
+   ============================================ */
+.year-select-wrap {
+    margin-bottom: 1.2rem;
+}
+.year-select-wrap label {
+    display: block;
+    font-size: .75rem;
+    color: #888;
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+.year-select-wrap select {
+    width: 100%;
+    padding: .55rem .8rem;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.year-select-wrap select:focus {
+    outline: none;
+    border-color: #cc0000;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    flex: 1;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ddd;
+    cursor: pointer;
+    transition: .2s;
+    border-left: 4px solid transparent;
+}
+.nav-item i {
+    width: 26px;
+    color: #cc0000;
+}
+.nav-item small {
+    display: block;
+    font-size: .65rem;
+    color: #777;
+    font-weight: 400;
+    margin-top: 2px;
+}
+.nav-item:hover,
+.nav-item.active {
+    background: #2a2a2a;
+    border-left-color: #e60000;
+    color: #fff;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.sync-btn {
+    background: #cc0000;
+    color: #fff;
+    border: none;
+    padding: .5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+    margin-top: .5rem;
+    width: 100%;
+}
+.sync-btn:hover {
+    background: #ff1a1a;
+    transform: scale(1.02);
+}
+.sync-btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================================
+   TABS
+   ============================================ */
+.page-tabs,
+.detail-tabs {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.page-tab,
+.detail-tab {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: .45rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: .85rem;
+    font-weight: 600;
+    transition: .2s;
+}
+.page-tab.active,
+.page-tab:hover,
+.detail-tab.active,
+.detail-tab:hover {
+    background: #cc0000;
+    border-color: #cc0000;
+    color: #fff;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.content-card {
+    background: #222;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 6px solid #cc0000;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .7);
+}
+.content-card h2 {
+    color: #e60000;
+    font-size: 1.4rem;
+    margin-bottom: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.content-card ul {
+    list-style: none;
+}
+.content-card ul li {
+    padding: .55rem 0;
+    border-bottom: 1px solid #333;
+    color: #d0d0d0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.content-card ul li i {
+    color: #cc0000;
+    width: 22px;
+}
+
+.card-mini {
+    background: #1e1e1e;
+    border-radius: 14px;
+    padding: 1rem 1.4rem;
+    border-left: 4px solid #cc0000;
+}
+.card-mini h3 {
+    color: #e60000;
+    margin-bottom: .3rem;
+    font-size: 1rem;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+.badge {
+    background: #cc0000;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .8rem;
+    border-radius: 30px;
+}
+
+/* ============================================
+   RACE ITEMS
+   ============================================ */
+.race-item {
+    background: #252525;
+    padding: .7rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom: .6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+    border: 1px solid #333;
+    gap: .8rem;
+    flex-wrap: wrap;
+}
+.race-item:hover {
+    background: #2e2e2e;
+    border-color: #cc0000;
+}
+.race-item.pending {
+    opacity: .7;
+    cursor: default;
+}
+.race-item.pending:hover {
+    border-color: #333;
+    background: #252525;
+}
+.race-item .winner {
+    color: #ff4d4d;
+    font-weight: 600;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+.data-table-wrap {
+    overflow-x: auto;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ddd;
+    font-size: .92rem;
+}
+.data-table th {
+    text-align: left;
+    color: #e60000;
+    border-bottom: 2px solid #cc0000;
+    padding: .6rem .4rem;
+    white-space: nowrap;
+}
+.data-table td {
+    padding: .5rem .4rem;
+    border-bottom: 1px solid #333;
+}
+.data-table .pos {
+    color: #ff4d4d;
+    font-weight: 700;
+}
+
+/* ============================================
+   RACE DETAIL
+   ============================================ */
+.race-detail {
+    margin-top: 1rem;
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid #cc0000;
+}
+
+/* ============================================
+   STATUS & FEEDBACK
+   ============================================ */
+#syncStatus {
+    margin-top: 6px;
+    font-size: .7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: none;
+}
+#syncStatus.show {
+    display: block;
+}
+#syncStatus.success {
+    background: #1a5a1a;
+    color: #4caf50;
+}
+#syncStatus.error {
+    background: #5a1a1a;
+    color: #ff4d4d;
+}
+#syncStatus.loading {
+    background: #1a1a3a;
+    color: #4a9aff;
+}
+
+.loading {
+    color: #aaa;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+.error-box {
+    background: #3a1a1a;
+    border: 1px solid #cc0000;
+    color: #ff6b6b;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.api-source {
+    font-size: .75rem;
+    color: #4caf50;
+    background: #1e2e1e;
+    padding: .35rem .8rem;
+    border-radius: 20px;
+}

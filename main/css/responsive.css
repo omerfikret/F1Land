@@ -1,0 +1,97 @@
+/* ============================================
+   TABLET
+   ============================================ */
+@media (max-width: 780px) {
+    .sidebar {
+        width: 200px;
+        padding: 1rem;
+    }
+    .main-content {
+        padding: 1.2rem;
+    }
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .page-header h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 580px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 3px solid #cc0000;
+        flex-wrap: wrap;
+        padding: .8rem;
+    }
+    
+    .sidebar-brand,
+    .year-select-wrap {
+        width: 100%;
+    }
+    
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .nav-item {
+        padding: .4rem .7rem;
+        font-size: .85rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        flex: 1;
+        min-width: 80px;
+        justify-content: center;
+    }
+    .nav-item small {
+        display: none;
+    }
+    .nav-item:hover,
+    .nav-item.active {
+        border-left: none;
+        border-bottom-color: #e60000;
+    }
+    
+    .sidebar-footer {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .content-card {
+        padding: 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .page-tabs,
+    .detail-tabs {
+        gap: .3rem;
+    }
+    .page-tab,
+    .detail-tab {
+        padding: .3rem .7rem;
+        font-size: .75rem;
+    }
+    
+    .race-item {
+        padding: .5rem .8rem;
+        font-size: .85rem;
+    }
+}
