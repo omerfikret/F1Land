@@ -1,25 +1,40 @@
 /* ============================================
-   TABLET
+   RESPONSIVE - MODERN
    ============================================ */
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 2rem 1.8rem;
+    }
+    .grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 780px) {
     .sidebar {
-        width: 200px;
-        padding: 1rem;
+        width: 220px;
+        padding: 1.5rem 1rem;
     }
     .main-content {
-        padding: 1.2rem;
+        padding: 1.5rem;
     }
     .grid-2 {
         grid-template-columns: 1fr;
     }
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
     .page-header h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+    }
+    .sidebar-brand {
+        font-size: 1.4rem;
     }
 }
 
-/* ============================================
-   MOBILE
-   ============================================ */
+/* MOBILE */
 @media (max-width: 580px) {
     body {
         flex-direction: column;
@@ -30,38 +45,64 @@
         height: auto;
         position: relative;
         border-right: none;
-        border-bottom: 3px solid #cc0000;
+        border-bottom: 1px solid rgba(204, 0, 0, 0.2);
+        padding: 1rem;
+        flex-direction: row;
         flex-wrap: wrap;
-        padding: .8rem;
+        gap: 0.5rem;
     }
     
-    .sidebar-brand,
+    .sidebar-brand {
+        width: 100%;
+        font-size: 1.2rem;
+        padding-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .sidebar-brand i {
+        font-size: 1.4rem;
+    }
+    
     .year-select-wrap {
         width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .year-select-wrap select {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
     }
     
     .nav-menu {
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
+        gap: 0.2rem;
     }
     
     .nav-item {
-        padding: .4rem .7rem;
-        font-size: .85rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
         border-left: none;
-        border-bottom: 3px solid transparent;
+        border-bottom: 2px solid transparent;
         flex: 1;
-        min-width: 80px;
+        min-width: 60px;
         justify-content: center;
+        border-radius: 8px;
     }
     .nav-item small {
         display: none;
     }
-    .nav-item:hover,
+    .nav-item i {
+        width: 18px;
+        font-size: 0.9rem;
+    }
+    .nav-item.active::before {
+        display: none;
+    }
     .nav-item.active {
-        border-left: none;
-        border-bottom-color: #e60000;
+        border-bottom-color: #cc0000;
     }
     
     .sidebar-footer {
@@ -74,24 +115,54 @@
     
     .content-card {
         padding: 1rem;
+        border-radius: 12px;
     }
     
     .page-header h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+    .page-header h1 i {
+        font-size: 1.2rem;
     }
     
     .page-tabs,
     .detail-tabs {
-        gap: .3rem;
+        gap: 0.3rem;
+        padding: 0.2rem;
     }
     .page-tab,
     .detail-tab {
-        padding: .3rem .7rem;
-        font-size: .75rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.7rem;
+        border-radius: 8px;
     }
     
     .race-item {
-        padding: .5rem .8rem;
-        font-size: .85rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    .race-item .winner {
+        font-size: 0.85rem;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 0.4rem 0.3rem;
+        font-size: 0.75rem;
+    }
+    
+    .card-mini {
+        padding: 0.8rem 1rem;
+    }
+    .card-mini p {
+        font-size: 1.2rem;
+    }
+    
+    .api-source {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.7rem;
     }
 }

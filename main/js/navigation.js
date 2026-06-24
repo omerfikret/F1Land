@@ -1,61 +1,71 @@
 /* ============================================
-   NAVİGASYON STATE
+   NAVİGASYON
    ============================================ */
+
+const pageTabs = { 1: 'seasons', 2: 'standings' }; // 3. sayfa yok
 let activePage = 1;
-let pageTabs = { 1: 'seasons', 2: 'races', 3: 'standings' };
+let selectedYear = new Date().getFullYear();
+let availableSeasons = [];
 
-/* ============================================
-   SAYFA YÜKLEME
-   ============================================ */
-function loadPage(num) {
-    activePage = num;
-    
-    // Nav item aktifleştirme
-    document.querySelectorAll('.nav-item').forEach(el => {
-        el.classList.toggle('active', el.dataset.page === String(num));
-    });
-    
-    // Sayfa yükleme
-    if (num === 1) loadPage1();
-    else if (num === 2) loadPage2();
-    else loadPage3();
-}
-
-/* ============================================
-   SEZON YÜKLEME
-   ============================================ */
 async function loadSeasons() {
     try {
-        const seasons = await fetchAllPages(API.seasons, d => d.MRData.SeasonTable.Seasons);
-        availableSeasons = seasons.map(s => parseInt(s.season, 10)).sort((a, b) => b - a);
-        
+        console.log('🔄 loadSeasons çalıştı...');
+        const years = await fetchSeasons();
+        availableSeasons = years;
         if (!availableSeasons.includes(selectedYear)) {
-            selectedYear = availableSeasons[0] || new Date().getFullYear();
+            selectedYear = availableSeasons[0] || 2024;
         }
-        
         DOM.yearSelect.innerHTML = availableSeasons.map(y =>
             `<option value="${y}"${y === selectedYear ? ' selected' : ''}>${y}</option>`
         ).join('');
-    } catch (e) {
-        console.error('Sezonlar yüklenemedi:', e);
+        console.log('✅ Sezonlar yüklendi:', availableSeasons);
+        return availableSeasons;
+    } catch (error) {
+        console.error('❌ loadSeasons Error:', error);
+        availableSeasons = [2024, 2023, 2022];
+        selectedYear = 2024;
+        DOM.yearSelect.innerHTML = availableSeasons.map(y =>
+            `<option value="${y}"${y === selectedYear ? ' selected' : ''}>${y}</option>`
+        ).join('');
+        throw error;
     }
 }
 
-/* ============================================
-   NAVİGASYON EVENTLERİ
-   ============================================ */
-document.querySelectorAll('#navMenu .nav-item').forEach(item => {
-    item.addEventListener('click', () => loadPage(parseInt(item.dataset.page, 10)));
+function loadPage(num) {
+    console.log('📄 Sayfa yükleniyor:', num);
+    activePage = num;
+    document.querySelectorAll('.nav-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.page === String(num));
+    });
+    if (num === 1) loadPage1();
+    else if (num === 2) loadPage2();
+    // 3. sayfa yok
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM yüklendi, eventler bağlanıyor...');
+    document.querySelectorAll('#navMenu .nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const page = parseInt(this.dataset.page, 10);
+            loadPage(page);
+        });
+    });
+    DOM.yearSelect.addEventListener('change', function() {
+        selectedYear = parseInt(this.value, 10);
+        console.log('📅 Yıl değişti:', selectedYear);
+        if (activePage === 2) loadPage2();
+        else if (activePage === 1) loadPage1();
+    });
+    DOM.syncBtn.addEventListener('click', function() {
+        this.disabled = true;
+        loadPage(activePage);
+        setTimeout(() => { this.disabled = false; }, 400);
+    });
 });
 
-DOM.yearSelect.addEventListener('change', () => {
-    selectedYear = parseInt(DOM.yearSelect.value, 10);
-    if (activePage === 2) loadPage2();
-    else if (activePage === 3) loadPage3();
-});
-
-DOM.syncBtn.addEventListener('click', () => {
-    DOM.syncBtn.disabled = true;
-    loadPage(activePage);
-    setTimeout(() => { DOM.syncBtn.disabled = false; }, 400);
-});
+window.pageTabs = pageTabs;
+window.loadSeasons = loadSeasons;
+window.loadPage = loadPage;
+window.selectedYear = selectedYear;
+window.availableSeasons = availableSeasons;
+console.log('✅ navigation.js yüklendi!');

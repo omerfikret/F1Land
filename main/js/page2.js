@@ -1,116 +1,106 @@
 /* ============================================
-   SAYFA 2: race · driver · constructor
+   SAYFA 2: standings · races (takvim)
    ============================================ */
+
 async function loadPage2(tab = pageTabs[2]) {
     pageTabs[2] = tab;
-    showLoading(`${selectedYear} sezon verileri yükleniyor...`);
+    showLoading(`${selectedYear} yarış verileri yükleniyor...`);
 
     const tabs = [
-        { id: 'races', label: 'Yarış Takvimi' },
-        { id: 'drivers', label: 'Pilotlar' },
-        { id: 'constructors', label: 'Takımlar' }
+        { id: 'standings', label: 'Puan Durumu' },
+        { id: 'races', label: 'Yarış Takvimi' }
     ];
-    
-    const endpoints = { 
-        races: API.races(selectedYear), 
-        drivers: API.drivers(selectedYear), 
-        constructors: API.constructors(selectedYear) 
-    };
-    
-    const titles = { 
-        races: `${selectedYear} Yarış Takvimi`, 
-        drivers: `${selectedYear} Pilotları`, 
-        constructors: `${selectedYear} Takımları` 
-    };
 
     try {
         let body = '';
-        
-        if (tab === 'races') {
-            const races = await fetchAllPages(API.races(selectedYear), d => d.MRData.RaceTable.Races);
-            
-            body = `
-                <ul>${races.map(r => {
-                    const c = r.Circuit || {}, loc = c.Location || {};
-                    const sprint = r.Sprint ? '<span class="badge">Sprint</span>' : '';
-                    return `<li>
-                        <i class="fas fa-flag-checkered"></i>
-                        <strong>R${r.round} — ${r.raceName}</strong>
-                        <span style="color:#888;">${c.circuitName} · ${loc.country}</span>
-                        <span style="margin-left:auto;">${formatDate(r.date)}</span>
-                        ${sprint}
-                    </li>`;
-                }).join('')}</ul>
-                <div class="grid-2">
-                    <div class="card-mini">
-                        <h3>Toplam Yarış</h3>
-                        <p>${races.length} GP</p>
-                    </div>
-                    <div class="card-mini">
-                        <h3>Sprint Hafta Sonları</h3>
-                        <p>${races.filter(r => r.Sprint).length}</p>
-                    </div>
-                </div>`;
-                
-        } else if (tab === 'drivers') {
-            const drivers = await fetchAllPages(API.drivers(selectedYear), d => d.MRData.DriverTable.Drivers);
-            drivers.sort((a, b) => (parseInt(a.permanentNumber) || 999) - (parseInt(b.permanentNumber) || 999));
-            
-            body = `
-                <ul>${drivers.map(d => `
-                    <li>
-                        <i class="fas fa-user"></i>
-                        <strong>${driverName(d)}</strong>
-                        <span class="badge">#${d.permanentNumber || '-'}</span>
-                        <span style="color:#aaa;">${d.code || ''}</span>
-                        <span style="margin-left:auto;color:#888;">
-                            ${d.nationality} · ${formatDate(d.dateOfBirth)}
-                        </span>
-                    </li>
-                `).join('')}</ul>
-                <div class="grid-2">
-                    <div class="card-mini">
-                        <h3>Toplam Pilot</h3>
-                        <p>${drivers.length}</p>
-                    </div>
-                </div>`;
-                
-        } else {
-            const teams = await fetchAllPages(API.constructors(selectedYear), d => d.MRData.ConstructorTable.Constructors);
-            teams.sort((a, b) => a.name.localeCompare(b.name));
-            
-            body = `
-                <ul>${teams.map(t => `
-                    <li>
-                        <i class="fas fa-flag"></i>
-                        <strong>${t.name}</strong>
-                        <span style="color:#888;margin-left:8px;">${t.nationality}</span>
-                        <span class="badge">${t.constructorId}</span>
-                    </li>
-                `).join('')}</ul>
-                <div class="grid-2">
-                    <div class="card-mini">
-                        <h3>Toplam Takım</h3>
-                        <p>${teams.length}</p>
-                    </div>
-                </div>`;
+        if (tab === 'standings') {
+            body = await renderStandings();
+        } else if (tab === 'races') {
+            body = await renderRaceCalendar();
         }
 
         DOM.mainContent.innerHTML = `
             <div class="page-header">
-                <h1><i class="fas fa-users"></i> Sayfa 2 — Sezon Kadrosu</h1>
-                <span class="api-source">${endpoints[tab]}</span>
+                <h1><i class="fas fa-flag-checkered"></i> ${selectedYear} Sezonu - Yarış</h1>
+                <!-- api-source kaldırıldı -->
             </div>
             <div class="page-tabs">${renderPageTabs(tabs, tab)}</div>
             <div class="content-card">
-                <h2><i class="fas fa-list"></i> ${titles[tab]}</h2>
+                <h2><i class="fas fa-list"></i> ${tabs.find(t => t.id === tab).label}</h2>
                 ${body}
             </div>`;
-
         bindPageTabs(2, tabs, loadPage2);
-        setStatus(`${selectedYear} sezon kadrosu yüklendi`, 'success');
-        
+        setStatus(`${selectedYear} yarış verileri yüklendi`, 'success');
     } catch (e) {
         showError(e.message);
+    }
+}
+
+// ---------- ALT FONKSİYONLAR ----------
+async function renderStandings() {
+    try {
+        const [drivers, constructors] = await Promise.all([
+            fetchStandings(selectedYear, 'driver'),
+            fetchStandings(selectedYear, 'constructor')
+        ]);
+        let html = '';
+        if (drivers && drivers.length) {
+            html += `
+                <h3 style="color:#e60000;margin-bottom:.8rem;">
+                    <i class="fas fa-user"></i> Sürücü Sıralaması
+                </h3>
+                <ul>${drivers.map(d => `
+                    <li>
+                        <span class="pos" style="width:28px;">${d.position || '-'}</span>
+                        <strong>${d.Driver?.givenName || ''} ${d.Driver?.familyName || ''}</strong>
+                        <span style="color:#888;">${d.Constructors?.[0]?.name || ''}</span>
+                        <span style="margin-left:auto;color:#e60000;font-weight:600;">${d.points || 0} puan</span>
+                        <span style="color:#888;">🏆 ${d.wins || 0}</span>
+                    </li>
+                `).join('')}</ul>`;
+        }
+        if (constructors && constructors.length) {
+            html += `
+                <h3 style="color:#e60000;margin:1.5rem 0 .8rem;">
+                    <i class="fas fa-flag"></i> Takım Sıralaması
+                </h3>
+                <ul>${constructors.map(c => `
+                    <li>
+                        <span class="pos" style="width:28px;">${c.position || '-'}</span>
+                        <strong>${c.Constructor?.name || ''}</strong>
+                        <span style="margin-left:auto;color:#e60000;font-weight:600;">${c.points || 0} puan</span>
+                        <span style="color:#888;">🏆 ${c.wins || 0}</span>
+                    </li>
+                `).join('')}</ul>`;
+        }
+        if (!html) html = '<p style="color:#888;">Henüz sıralama verisi yok.</p>';
+        return html;
+    } catch (error) {
+        console.error('renderStandings Error:', error);
+        return `<p style="color:#ff6b6b;">Hata: ${error.message}</p>`;
+    }
+}
+
+async function renderRaceCalendar() {
+    try {
+        const races = await fetchRaces(selectedYear);
+        if (!races.length) return '<p>Yarış takvimi yok.</p>';
+        let html = `<div id="raceList">`;
+        races.forEach(r => {
+            html += `<div class="race-item" data-round="${r.round}">
+                <span><i class="fas fa-flag"></i> <strong>${r.round}. — ${r.raceName}</strong></span>
+                <span>${r.circuitName}</span>
+                <span>${formatDate(r.date)}</span>
+            </div>`;
+        });
+        html += `</div><div id="raceDetailContainer"></div>`;
+        setTimeout(() => {
+            document.querySelectorAll('.race-item').forEach(el => {
+                el.addEventListener('click', () => showRaceDetail(selectedYear, el.dataset.round));
+            });
+        }, 0);
+        return html;
+    } catch (error) {
+        return `<p>Hata: ${error.message}</p>`;
     }
 }

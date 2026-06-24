@@ -1,17 +1,18 @@
 /* ============================================
-   SIDEBAR LAYOUT
+   LAYOUT - CLASSIC MODERN
    ============================================ */
+
 .sidebar {
-    width: 260px;
-    background: #1f1f1f;
-    border-right: 3px solid #cc0000;
+    width: 280px;
+    background: #222; /* daha düz koyu */
+    border-right: 1px solid #333;
     display: flex;
     flex-direction: column;
-    padding: 1.8rem 1rem;
+    padding: 2rem 1.2rem;
     height: 100vh;
     position: sticky;
     top: 0;
-    box-shadow: 4px 0 12px rgba(0, 0, 0, .6);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.5);
     overflow-y: auto;
     flex-shrink: 0;
 }
@@ -19,41 +20,40 @@
 .sidebar-brand {
     display: flex;
     align-items: center;
-    gap: .5rem;
-    font-size: 1.8rem;
+    gap: 0.75rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: #e60000;
-    border-bottom: 2px solid #cc0000;
+    color: #fff;
+    border-bottom: 2px solid #b71c1c;
     padding-bottom: 1rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.sidebar-brand i {
+    font-size: 1.8rem;
+    color: #b71c1c;
 }
 
 .sidebar-footer {
     margin-top: auto;
-    font-size: .7rem;
+    font-size: 0.75rem;
     color: #666;
     border-top: 1px solid #333;
     padding-top: 1rem;
     text-align: center;
 }
 
-/* ============================================
-   MAIN CONTENT LAYOUT
-   ============================================ */
 .main-content {
     flex: 1;
-    padding: 2rem 2.5rem;
+    padding: 2.5rem 3rem;
     background: #1a1a1a;
     overflow-y: auto;
+    min-height: 100vh;
 }
 
-/* ============================================
-   PAGE HEADER
-   ============================================ */
 .page-header {
-    border-bottom: 2px solid #cc0000;
-    padding-bottom: .6rem;
-    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #b71c1c;
+    padding-bottom: 0.8rem;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,23 +61,29 @@
     flex-wrap: wrap;
 }
 .page-header h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: #e60000;
+    color: #fff;
     display: flex;
     align-items: center;
-    gap: .8rem;
+    gap: 0.8rem;
 }
 .page-header h1 i {
-    color: #cc0000;
+    color: #b71c1c;
 }
 
-/* ============================================
-   GRID
-   ============================================ */
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
 }
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+/* api-source sınıfı kaldırıldı, artık kullanılmıyor */
