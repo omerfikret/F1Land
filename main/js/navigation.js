@@ -2,7 +2,8 @@
    NAVİGASYON
    ============================================ */
 
-const pageTabs = { 1: 'seasons', 2: 'standings' }; // 3. sayfa yok
+// pageTabs: hangi sekmenin aktif olduğunu hatırla
+const pageTabs = { 1: 'about', 2: 'standings' }; // about ile başla
 let activePage = 1;
 let selectedYear = new Date().getFullYear();
 let availableSeasons = [];
@@ -39,7 +40,6 @@ function loadPage(num) {
     });
     if (num === 1) loadPage1();
     else if (num === 2) loadPage2();
-    // 3. sayfa yok
 }
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,89 +1,109 @@
 /* ============================================
-   LAYOUT - CLASSIC MODERN
+   LAYOUT — F1LAND PREMIUM
    ============================================ */
 
+/* Sidebar — Cam Efektli */
 .sidebar {
     width: 280px;
-    background: #222; /* daha düz koyu */
-    border-right: 1px solid #333;
+    background: rgba(20, 20, 20, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
-    padding: 2rem 1.2rem;
+    padding: 2rem 1.5rem;
     height: 100vh;
     position: sticky;
     top: 0;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.5);
-    overflow-y: auto;
     flex-shrink: 0;
+    overflow-y: auto;
+    transition: all var(--transition-smooth);
 }
 
+/* Brand */
 .sidebar-brand {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #fff;
-    border-bottom: 2px solid #b71c1c;
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
-}
-.sidebar-brand i {
     font-size: 1.8rem;
-    color: #b71c1c;
+    font-weight: 900;
+    color: var(--text-primary);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    letter-spacing: -0.03em;
 }
 
-.sidebar-footer {
-    margin-top: auto;
-    font-size: 0.75rem;
-    color: #666;
-    border-top: 1px solid #333;
-    padding-top: 1rem;
-    text-align: center;
+.sidebar-brand i {
+    font-size: 2rem;
+    color: var(--f1-red);
+    filter: drop-shadow(0 0 12px rgba(225, 6, 0, 0.3));
 }
 
+.sidebar-brand span {
+    background: linear-gradient(135deg, #ffffff 0%, var(--f1-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Ana İçerik */
 .main-content {
     flex: 1;
-    padding: 2.5rem 3rem;
-    background: #1a1a1a;
-    overflow-y: auto;
+    padding: 2.5rem 3.5rem;
+    background: var(--bg-primary);
     min-height: 100vh;
+    transition: all var(--transition-smooth);
 }
 
+/* Sayfa Başlığı */
 .page-header {
-    border-bottom: 2px solid #b71c1c;
-    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1rem;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 1rem;
 }
+
 .page-header h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 900;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-}
-.page-header h1 i {
-    color: #b71c1c;
+    letter-spacing: -0.03em;
 }
 
+.page-header h1 i {
+    color: var(--f1-red);
+    font-size: 2rem;
+}
+
+/* Grid Sistemleri */
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    margin-top: 1.2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.2rem;
-    margin-top: 1.2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-/* api-source sınıfı kaldırıldı, artık kullanılmıyor */
+/* Sidebar Footer */
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1.2rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+}

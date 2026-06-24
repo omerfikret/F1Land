@@ -1,24 +1,25 @@
 /* ============================================
-   RESPONSIVE - MODERN
+   RESPONSIVE — F1LAND PREMIUM
    ============================================ */
 
-/* TABLET */
+/* Tablet */
 @media (max-width: 1024px) {
     .main-content {
-        padding: 2rem 1.8rem;
+        padding: 2rem 2rem;
     }
     .grid-3 {
         grid-template-columns: 1fr 1fr;
     }
 }
 
+/* Küçük Tablet & Büyük Telefon */
 @media (max-width: 780px) {
     .sidebar {
         width: 220px;
         padding: 1.5rem 1rem;
     }
     .main-content {
-        padding: 1.5rem;
+        padding: 1.5rem 1.2rem;
     }
     .grid-2 {
         grid-template-columns: 1fr;
@@ -27,14 +28,17 @@
         grid-template-columns: 1fr;
     }
     .page-header h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     .sidebar-brand {
         font-size: 1.4rem;
     }
+    .sidebar-brand i {
+        font-size: 1.6rem;
+    }
 }
 
-/* MOBILE */
+/* Mobil */
 @media (max-width: 580px) {
     body {
         flex-direction: column;
@@ -45,19 +49,21 @@
         height: auto;
         position: relative;
         border-right: none;
-        border-bottom: 1px solid rgba(204, 0, 0, 0.2);
-        padding: 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 1rem 1.2rem;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 0.5rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
     
     .sidebar-brand {
         width: 100%;
         font-size: 1.2rem;
-        padding-bottom: 0.8rem;
-        margin-bottom: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 0.6rem;
+        margin-bottom: 0.3rem;
+        border-bottom: 1px solid var(--border-subtle);
     }
     
     .sidebar-brand i {
@@ -66,11 +72,11 @@
     
     .year-select-wrap {
         width: 100%;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
     }
     
     .year-select-wrap select {
-        padding: 0.4rem 0.6rem;
+        padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
     }
     
@@ -83,7 +89,7 @@
     
     .nav-item {
         padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         border-left: none;
         border-bottom: 2px solid transparent;
         flex: 1;
@@ -91,18 +97,22 @@
         justify-content: center;
         border-radius: 8px;
     }
+    
     .nav-item small {
         display: none;
     }
+    
     .nav-item i {
         width: 18px;
         font-size: 0.9rem;
     }
+    
     .nav-item.active::before {
         display: none;
     }
+    
     .nav-item.active {
-        border-bottom-color: #cc0000;
+        border-bottom-color: var(--f1-red);
     }
     
     .sidebar-footer {
@@ -110,17 +120,18 @@
     }
     
     .main-content {
-        padding: 1rem;
+        padding: 1rem 0.8rem;
     }
     
     .content-card {
-        padding: 1rem;
+        padding: 1rem 1.2rem;
         border-radius: 12px;
     }
     
     .page-header h1 {
         font-size: 1.2rem;
     }
+    
     .page-header h1 i {
         font-size: 1.2rem;
     }
@@ -130,6 +141,7 @@
         gap: 0.3rem;
         padding: 0.2rem;
     }
+    
     .page-tab,
     .detail-tab {
         padding: 0.3rem 0.8rem;
@@ -144,6 +156,7 @@
         align-items: flex-start;
         gap: 0.3rem;
     }
+    
     .race-item .winner {
         font-size: 0.85rem;
     }
@@ -151,18 +164,14 @@
     .data-table th,
     .data-table td {
         padding: 0.4rem 0.3rem;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .card-mini {
         padding: 0.8rem 1rem;
     }
-    .card-mini p {
-        font-size: 1.2rem;
-    }
     
-    .api-source {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.7rem;
+    .card-mini p {
+        font-size: 1.3rem;
     }
 }
