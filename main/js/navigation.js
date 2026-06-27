@@ -2,8 +2,8 @@
    NAVİGASYON
    ============================================ */
 
-// pageTabs: hangi sekmenin aktif olduğunu hatırla
 const pageTabs = { 1: 'about', 2: 'standings' }; // about ile başla
+// ... diğer kodlar aynen
 let activePage = 1;
 let selectedYear = new Date().getFullYear();
 let availableSeasons = [];

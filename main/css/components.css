@@ -444,17 +444,17 @@
 }
 
 /* ============================================
-   ANA SAYFA - HAKKINDA KARTLARI
+   ANA SAYFA - BİLGİ KARTLARI (Hakkında & Tarihçe)
    ============================================ */
 
-.about-grid {
+.info-grid {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
     margin-top: 1rem;
 }
 
-.about-card {
+.info-card {
     display: flex;
     align-items: stretch;
     gap: 2rem;
@@ -465,24 +465,21 @@
     transition: all var(--transition-smooth);
 }
 
-.about-card:hover {
+.info-card:hover {
     border-color: var(--border-red);
     box-shadow: var(--glow-red);
     transform: translateY(-3px);
 }
 
-/* 1. ve 3. kart: metin sol, görsel sağ */
-.about-card-left {
-    flex-direction: row;
+.info-card-left {
+    flex-direction: row !important;
 }
 
-/* 2. kart: görsel sol, metin sağ */
-.about-card-right {
-    flex-direction: row;
-    /* flex-direction: row; ile HTML sıralamasına göre görsel solda, metin sağda olur */
+.info-card-right {
+    flex-direction: row-reverse ;
 }
 
-.about-text {
+.info-text {
     flex: 1.2;
     display: flex;
     flex-direction: column;
@@ -490,7 +487,7 @@
     padding: 0.5rem;
 }
 
-.about-text .about-number {
+.info-text .info-number {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--f1-red);
@@ -499,23 +496,23 @@
     opacity: 0.7;
 }
 
-.about-text h3 {
+.info-text h3 {
     font-size: 1.4rem;
     margin-bottom: 0.6rem;
     color: var(--text-primary);
 }
 
-.about-text p {
+.info-text p {
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
 
-.about-text p:last-child {
+.info-text p:last-child {
     margin-bottom: 0;
 }
 
-.about-image {
+.info-image {
     flex: 1;
     display: flex;
     align-items: center;
@@ -526,37 +523,37 @@
     min-height: 180px;
 }
 
-.about-image img {
+.info-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-smooth);
 }
 
-.about-card:hover .about-image img {
+.info-card:hover .info-image img {
     transform: scale(1.02);
 }
 
 /* Mobil Duyarlılık */
 @media (max-width: 780px) {
-    .about-card,
-    .about-card-left,
-    .about-card-right {
+    .info-card,
+    .info-card-left,
+    .info-card-right {
         flex-direction: column !important;
         padding: 1.2rem;
     }
     
-    .about-image {
+    .info-image {
         min-height: 140px;
         width: 100%;
-        order: -1; /* Görsel metnin üstüne çıkar */
+        order: -1;
     }
     
-    .about-text {
+    .info-text {
         padding: 0;
     }
     
-    .about-text h3 {
+    .info-text h3 {
         font-size: 1.2rem;
     }
 }
