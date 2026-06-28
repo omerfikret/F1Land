@@ -12,32 +12,44 @@
 </head>
 <body>
 
-<nav class="sidebar">
-    <div class="sidebar-brand">
-        <i class="fas fa-flag-checkered"></i>
-        <span>F1Land</span>
-    </div>
-    <div class="year-select-wrap">
-        <label for="yearSelect">Sezon</label>
-        <select id="yearSelect"></select>
-    </div>
-    <div class="nav-menu" id="navMenu">
-        <div class="nav-item active" data-page="1">
-            <i class="fas fa-home"></i>
-            <div>Ana Sayfa<small>sezon · sürücü · takım</small></div>
-        </div>
-        <div class="nav-item" data-page="2">
+<!-- ÜST BAR (sol, orta, sağ) -->
+<nav class="topbar">
+    <!-- SOL: Logo + Yenile -->
+    <div class="topbar-left">
+        <div class="topbar-brand">
             <i class="fas fa-flag-checkered"></i>
-            <div>Yarış<small>puan · takvim</small></div>
+            <span>F1Land</span>
+        </div>
+        <button class="sync-btn" id="syncBtn"><i class="fas fa-sync"></i> Yenile</button>
+    </div>
+
+    <!-- ORTA: Menü -->
+    <div class="topbar-center" id="navMenu">
+        <div class="topbar-item active" data-page="1">
+            <i class="fas fa-home"></i> Ana Sayfa
+        </div>
+        <div class="topbar-item" data-page="2">
+            <i class="fas fa-info-circle"></i> Hakkında
+        </div>
+        <div class="topbar-item" data-page="3">
+            <i class="fas fa-history"></i> Tarihçe
+        </div>
+        <div class="topbar-item" data-page="4">
+            <i class="fas fa-gavel"></i> Kurallar
         </div>
     </div>
-    <div class="sidebar-footer">
-        <!-- Jolpica yazısı kaldırıldı -->
-        <button class="sync-btn" id="syncBtn"><i class="fas fa-sync"></i> Yenile</button>
+
+    <!-- SAĞ: Sezon + Durum -->
+    <div class="topbar-right">
+        <div class="topbar-year">
+            <label for="yearSelect">Sezon</label>
+            <select id="yearSelect"></select>
+        </div>
         <div id="syncStatus"></div>
     </div>
 </nav>
 
+<!-- ANA İÇERİK -->
 <main class="main-content" id="mainContent">
     <div class="loading"><i class="fas fa-spinner fa-pulse"></i> Veriler yükleniyor...</div>
 </main>
@@ -46,7 +58,9 @@
 <script src="js/helpers.js"></script>
 <script src="js/navigation.js"></script>
 <script src="js/page1.js"></script>
-<script src="js/page2.js"></script>
+<script src="js/about.js"></script>
+<script src="js/history.js"></script>
+<script src="js/rules.js"></script>
 <script src="js/detail.js"></script>
 <script src="js/app.js"></script>
 

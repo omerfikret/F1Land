@@ -1,9 +1,7 @@
 /* ============================================
-   NAVİGASYON
+   NAVİGASYON (Üst menü, 4 sayfa)
    ============================================ */
 
-const pageTabs = { 1: 'about', 2: 'standings' }; // about ile başla
-// ... diğer kodlar aynen
 let activePage = 1;
 let selectedYear = new Date().getFullYear();
 let availableSeasons = [];
@@ -35,27 +33,32 @@ async function loadSeasons() {
 function loadPage(num) {
     console.log('📄 Sayfa yükleniyor:', num);
     activePage = num;
-    document.querySelectorAll('.nav-item').forEach(el => {
-        el.classList.toggle('active', el.dataset.page === String(num));
+    document.querySelectorAll('.topbar-item').forEach(el => {
+        const page = parseInt(el.dataset.page, 10);
+        el.classList.toggle('active', page === num);
     });
     if (num === 1) loadPage1();
-    else if (num === 2) loadPage2();
+    else if (num === 2) loadAbout();
+    else if (num === 3) loadHistory();
+    else if (num === 4) loadRules();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ DOM yüklendi, eventler bağlanıyor...');
-    document.querySelectorAll('#navMenu .nav-item').forEach(item => {
+
+    document.querySelectorAll('#navMenu .topbar-item').forEach(item => {
         item.addEventListener('click', function() {
             const page = parseInt(this.dataset.page, 10);
             loadPage(page);
         });
     });
+
     DOM.yearSelect.addEventListener('change', function() {
         selectedYear = parseInt(this.value, 10);
         console.log('📅 Yıl değişti:', selectedYear);
-        if (activePage === 2) loadPage2();
-        else if (activePage === 1) loadPage1();
+        if (activePage === 1) loadPage1();
     });
+
     DOM.syncBtn.addEventListener('click', function() {
         this.disabled = true;
         loadPage(activePage);
@@ -63,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-window.pageTabs = pageTabs;
 window.loadSeasons = loadSeasons;
 window.loadPage = loadPage;
 window.selectedYear = selectedYear;
