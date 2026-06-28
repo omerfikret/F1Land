@@ -1,25 +1,27 @@
 /* ============================================
-   RESPONSIVE — F1LAND PREMIUM
+   RESPONSIVE — F1LAND v3 (Speed Line Style)
    ============================================ */
 
-/* Tablet */
 @media (max-width: 1024px) {
     .main-content {
-        padding: 2rem 2rem;
+        padding: 2rem 2.2rem;
     }
     .grid-3 {
         grid-template-columns: 1fr 1fr;
     }
+    .sidebar {
+        width: 240px;
+        padding: 1.8rem 1.2rem;
+    }
 }
 
-/* Küçük Tablet & Büyük Telefon */
 @media (max-width: 780px) {
     .sidebar {
         width: 220px;
         padding: 1.5rem 1rem;
     }
     .main-content {
-        padding: 1.5rem 1.2rem;
+        padding: 1.8rem 1.5rem;
     }
     .grid-2 {
         grid-template-columns: 1fr;
@@ -28,22 +30,23 @@
         grid-template-columns: 1fr;
     }
     .page-header h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     .sidebar-brand {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
     .sidebar-brand i {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+    .content-card {
+        padding: 1.6rem 1.8rem;
     }
 }
 
-/* Mobil */
 @media (max-width: 580px) {
     body {
         flex-direction: column;
     }
-    
     .sidebar {
         width: 100%;
         height: auto;
@@ -54,124 +57,109 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 0.5rem;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.4);
     }
-    
     .sidebar-brand {
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         padding-bottom: 0.6rem;
         margin-bottom: 0.3rem;
         border-bottom: 1px solid var(--border-subtle);
     }
-    
     .sidebar-brand i {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
-    
     .year-select-wrap {
         width: 100%;
         margin-bottom: 0.3rem;
     }
-    
     .year-select-wrap select {
-        padding: 0.4rem 0.8rem;
+        padding: 0.5rem 0.8rem;
         font-size: 0.85rem;
     }
-    
     .nav-menu {
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
         gap: 0.2rem;
     }
-    
     .nav-item {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.7rem;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.75rem;
         border-left: none;
         border-bottom: 2px solid transparent;
         flex: 1;
         min-width: 60px;
         justify-content: center;
-        border-radius: 8px;
+        border-radius: 10px;
+        backdrop-filter: none;
     }
-    
     .nav-item small {
         display: none;
     }
-    
     .nav-item i {
-        width: 18px;
-        font-size: 0.9rem;
+        width: 20px;
+        font-size: 1rem;
     }
-    
     .nav-item.active::before {
         display: none;
     }
-    
     .nav-item.active {
         border-bottom-color: var(--f1-red);
+        background: rgba(225, 6, 0, 0.06);
     }
-    
     .sidebar-footer {
         display: none;
     }
-    
     .main-content {
-        padding: 1rem 0.8rem;
+        padding: 1.2rem 0.8rem;
     }
-    
     .content-card {
-        padding: 1rem 1.2rem;
-        border-radius: 12px;
+        padding: 1.2rem 1.2rem;
+        border-radius: 14px;
     }
-    
     .page-header h1 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
-    
     .page-header h1 i {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
-    
     .page-tabs,
     .detail-tabs {
         gap: 0.3rem;
         padding: 0.2rem;
+        border-radius: 12px;
     }
-    
     .page-tab,
     .detail-tab {
-        padding: 0.3rem 0.8rem;
+        padding: 0.4rem 0.9rem;
         font-size: 0.7rem;
         border-radius: 8px;
     }
-    
     .race-item {
-        padding: 0.5rem 0.8rem;
+        padding: 0.6rem 1rem;
         font-size: 0.8rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 0.3rem;
     }
-    
     .race-item .winner {
         font-size: 0.85rem;
     }
-    
     .data-table th,
     .data-table td {
         padding: 0.4rem 0.3rem;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
-    
     .card-mini {
-        padding: 0.8rem 1rem;
+        padding: 0.9rem 1.2rem;
     }
-    
     .card-mini p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+    }
+    .race-detail {
+        padding: 1.2rem;
     }
 }

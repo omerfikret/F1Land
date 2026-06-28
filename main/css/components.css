@@ -1,48 +1,46 @@
 /* ============================================
-   COMPONENTS — F1LAND PREMIUM
+   COMPONENTS — F1LAND v3 (Speed Line Style)
    ============================================ */
 
 /* --- Yıl Seçici --- */
 .year-select-wrap {
     margin-bottom: 1.8rem;
 }
-
 .year-select-wrap label {
     display: block;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--text-muted);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     font-weight: 600;
 }
-
 .year-select-wrap select {
     width: 100%;
-    padding: 0.7rem 1rem;
-    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
     border: 1px solid var(--border-subtle);
     background: rgba(255, 255, 255, 0.03);
     color: var(--text-primary);
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-smooth);
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e10600' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
+    backdrop-filter: blur(4px);
 }
-
 .year-select-wrap select:hover {
     border-color: var(--border-red);
     background: rgba(255, 255, 255, 0.06);
+    box-shadow: var(--glow-red);
 }
-
 .year-select-wrap select:focus {
     outline: none;
     border-color: var(--f1-red);
-    box-shadow: var(--glow-red);
+    box-shadow: var(--glow-red-strong);
 }
 
 /* --- Navigasyon --- */
@@ -52,57 +50,55 @@
     gap: 0.3rem;
     flex: 1;
 }
-
 .nav-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.75rem 1.2rem;
-    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 14px;
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-smooth);
     border: 1px solid transparent;
     position: relative;
+    backdrop-filter: blur(2px);
 }
-
 .nav-item i {
-    width: 24px;
+    width: 26px;
     color: var(--text-muted);
-    font-size: 1.1rem;
-    transition: all var(--transition-fast);
+    font-size: 1.15rem;
+    transition: all var(--transition-smooth);
 }
-
 .nav-item small {
     display: block;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     color: var(--text-muted);
     font-weight: 400;
     margin-top: 2px;
-    opacity: 0.6;
+    opacity: 0.5;
+    letter-spacing: 0.02em;
 }
-
 .nav-item:hover {
     background: rgba(255, 255, 255, 0.04);
     color: var(--text-primary);
+    transform: translateX(6px);
 }
-
 .nav-item:hover i {
     color: var(--f1-red);
+    transform: scale(1.1);
 }
-
 .nav-item.active {
-    background: rgba(225, 6, 0, 0.08);
+    background: linear-gradient(135deg, rgba(225, 6, 0, 0.1), rgba(225, 6, 0, 0.02));
     color: var(--text-primary);
     border-color: var(--border-red);
+    box-shadow: var(--glow-red);
 }
-
 .nav-item.active i {
     color: var(--f1-red);
+    filter: drop-shadow(0 0 12px var(--f1-red-glow));
 }
-
 .nav-item.active::before {
     content: '';
     position: absolute;
@@ -110,10 +106,10 @@
     top: 50%;
     transform: translateY(-50%);
     width: 4px;
-    height: 28px;
+    height: 32px;
     background: var(--f1-red);
     border-radius: 0 4px 4px 0;
-    box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+    box-shadow: 0 0 30px var(--f1-red-glow);
 }
 
 /* --- Buton --- */
@@ -121,177 +117,188 @@
     background: linear-gradient(135deg, var(--f1-red), var(--f1-red-dark));
     color: #fff;
     border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 14px;
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
     transition: all var(--transition-smooth);
     margin-top: 0.5rem;
     width: 100%;
-    box-shadow: 0 4px 20px rgba(225, 6, 0, 0.2);
+    box-shadow: 0 4px 30px var(--f1-red-glow);
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.02em;
 }
-
 .sync-btn::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.1) 100%);
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.15) 100%);
     pointer-events: none;
 }
-
 .sync-btn:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 8px 35px rgba(225, 6, 0, 0.35);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 50px var(--f1-red-glow);
 }
-
 .sync-btn:active {
-    transform: translateY(0px) scale(0.98);
+    transform: translateY(0px) scale(0.97);
 }
-
 .sync-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
     transform: none !important;
 }
 
-/* --- Sekmeler (Tabs) --- */
+/* --- Sekmeler --- */
 .page-tabs,
 .detail-tabs {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.5rem;
     margin-bottom: 2rem;
     padding: 0.3rem;
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 14px;
+    border-radius: 16px;
     border: 1px solid var(--border-subtle);
     flex-wrap: wrap;
+    backdrop-filter: blur(4px);
 }
-
 .page-tab,
 .detail-tab {
     background: transparent;
     border: none;
     color: var(--text-muted);
-    padding: 0.5rem 1.4rem;
-    border-radius: 10px;
+    padding: 0.6rem 1.6rem;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 500;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-smooth);
+    position: relative;
 }
-
 .page-tab:hover,
 .detail-tab:hover {
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
 }
-
 .page-tab.active,
 .detail-tab.active {
-    background: rgba(225, 6, 0, 0.12);
+    background: linear-gradient(135deg, rgba(225, 6, 0, 0.12), rgba(225, 6, 0, 0.04));
     color: var(--text-primary);
-    box-shadow: 0 2px 15px rgba(225, 6, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(225, 6, 0, 0.08);
+    transform: scale(1.02);
+}
+.page-tab.active::after,
+.detail-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 30%;
+    width: 40%;
+    height: 2px;
+    background: var(--f1-red);
+    border-radius: 2px;
+    box-shadow: 0 0 20px var(--f1-red-glow);
 }
 
-/* --- Kartlar (Glassmorphism) --- */
+/* --- Kartlar --- */
 .content-card {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 2rem 2.2rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2.2rem 2.5rem;
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-subtle);
     transition: all var(--transition-smooth);
+    animation: fadeSlideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .content-card:hover {
     border-color: var(--border-red);
-    box-shadow: var(--glow-red);
-    transform: translateY(-2px);
+    box-shadow: var(--glow-red-strong);
+    transform: translateY(-4px);
 }
-
 .content-card h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
-
 .content-card ul li {
-    padding: 0.6rem 0;
+    padding: 0.7rem 0;
     border-bottom: 1px solid var(--border-subtle);
     color: var(--text-secondary);
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
     transition: all var(--transition-fast);
 }
-
 .content-card ul li:hover {
     color: var(--text-primary);
-    padding-left: 4px;
+    padding-left: 6px;
+    border-bottom-color: var(--border-red);
 }
-
 .content-card ul li i {
     color: var(--f1-red);
-    width: 22px;
+    width: 24px;
+    font-size: 1rem;
 }
 
 /* --- Mini Kartlar --- */
 .card-mini {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 14px;
-    padding: 1.2rem 1.5rem;
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.3rem 1.6rem;
     border: 1px solid var(--border-subtle);
     transition: all var(--transition-smooth);
+    backdrop-filter: blur(4px);
 }
-
 .card-mini:hover {
     background: rgba(255, 255, 255, 0.04);
     border-color: var(--border-red);
-    transform: translateY(-3px);
-    box-shadow: var(--glow-red);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--glow-red-strong);
 }
-
 .card-mini h3 {
     color: var(--text-muted);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     margin-bottom: 0.2rem;
 }
-
 .card-mini p {
     color: var(--text-primary);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
+    background: linear-gradient(135deg, #fff 60%, var(--f1-red-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* --- Rozetler --- */
+/* --- Rozet --- */
 .badge {
     background: linear-gradient(135deg, var(--f1-red), var(--f1-red-dark));
     color: #fff;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     font-weight: 700;
-    padding: 0.15rem 0.7rem;
-    border-radius: 20px;
+    padding: 0.2rem 0.8rem;
+    border-radius: 30px;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    box-shadow: 0 2px 12px var(--f1-red-glow);
 }
 
 /* --- Yarış Öğeleri --- */
 .race-item {
-    background: rgba(255, 255, 255, 0.02);
-    padding: 0.8rem 1.4rem;
-    border-radius: 12px;
-    margin-bottom: 0.6rem;
+    background: var(--bg-card);
+    padding: 0.9rem 1.6rem;
+    border-radius: 14px;
+    margin-bottom: 0.7rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -300,185 +307,171 @@
     border: 1px solid var(--border-subtle);
     gap: 0.8rem;
     flex-wrap: wrap;
+    backdrop-filter: blur(2px);
 }
-
 .race-item:hover {
     background: rgba(255, 255, 255, 0.04);
     border-color: var(--border-red);
-    transform: translateX(6px);
+    transform: translateX(8px) scale(1.01);
     box-shadow: var(--glow-red);
 }
-
 .race-item .winner {
     color: var(--f1-red-light);
     font-weight: 600;
+    text-shadow: 0 0 12px var(--f1-red-glow);
 }
 
 /* --- Tablolar --- */
 .data-table-wrap {
     overflow-x: auto;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(4px);
 }
-
 .data-table {
     width: 100%;
     border-collapse: collapse;
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
-
 .data-table th {
     text-align: left;
     color: var(--f1-red);
     border-bottom: 2px solid var(--border-red);
-    padding: 0.8rem 0.6rem;
+    padding: 0.9rem 0.7rem;
     font-weight: 700;
     font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    background: rgba(0,0,0,0.2);
 }
-
 .data-table td {
-    padding: 0.7rem 0.6rem;
+    padding: 0.7rem 0.7rem;
     border-bottom: 1px solid var(--border-subtle);
     transition: all var(--transition-fast);
 }
-
 .data-table tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.03);
 }
-
 .data-table .pos {
     color: var(--f1-red-light);
     font-weight: 700;
+    text-shadow: 0 0 8px var(--f1-red-glow);
 }
 
 /* --- Yarış Detayı --- */
 .race-detail {
-    margin-top: 1.8rem;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 1.8rem;
-    border-radius: 16px;
+    margin-top: 2rem;
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 20px;
     border: 1px solid var(--border-red);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    animation: fadeSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: fadeSlideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* --- Durum Mesajları --- */
 #syncStatus {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 0.7rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
     display: none;
     font-weight: 500;
+    backdrop-filter: blur(4px);
 }
-
 #syncStatus.show {
     display: block;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.4s ease;
 }
-
 #syncStatus.success {
-    background: rgba(76, 175, 80, 0.1);
+    background: rgba(76, 175, 80, 0.08);
     color: #4caf50;
-    border: 1px solid rgba(76, 175, 80, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.15);
 }
-
 #syncStatus.error {
-    background: rgba(244, 67, 54, 0.1);
+    background: rgba(244, 67, 54, 0.08);
     color: #ff4d4d;
-    border: 1px solid rgba(244, 67, 54, 0.2);
+    border: 1px solid rgba(244, 67, 54, 0.15);
 }
-
 #syncStatus.loading {
-    background: rgba(33, 150, 243, 0.1);
+    background: rgba(33, 150, 243, 0.08);
     color: #4a9aff;
-    border: 1px solid rgba(33, 150, 243, 0.2);
+    border: 1px solid rgba(33, 150, 243, 0.15);
 }
 
 /* --- Yükleme & Hata --- */
 .loading {
     color: var(--text-muted);
-    padding: 4rem;
+    padding: 5rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
-
 .loading i {
     color: var(--f1-red);
-    margin-right: 0.6rem;
-    animation: spin 1s linear infinite;
+    margin-right: 0.8rem;
+    animation: spin 1.2s linear infinite;
+    filter: drop-shadow(0 0 12px var(--f1-red-glow));
 }
-
 .error-box {
     background: rgba(244, 67, 54, 0.05);
     border: 1px solid rgba(244, 67, 54, 0.15);
     color: #ff6b6b;
-    padding: 1.2rem 1.5rem;
-    border-radius: 12px;
+    padding: 1.2rem 1.8rem;
+    border-radius: 14px;
+    backdrop-filter: blur(4px);
 }
 
 /* --- Animasyonlar --- */
 @keyframes fadeSlideUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px) scale(0.98);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
-
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* ============================================
-   ANA SAYFA - BİLGİ KARTLARI (Hakkında & Tarihçe)
-   ============================================ */
-
+/* --- Ana Sayfa Bilgi Kartları --- */
 .info-grid {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.8rem;
     margin-top: 1rem;
 }
-
 .info-card {
     display: flex;
     align-items: stretch;
-    gap: 2rem;
-    background: rgba(255,255,255,0.02);
-    border-radius: 16px;
-    padding: 1.8rem;
+    gap: 2.2rem;
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem;
     border: 1px solid var(--border-subtle);
     transition: all var(--transition-smooth);
+    backdrop-filter: blur(4px);
 }
-
 .info-card:hover {
     border-color: var(--border-red);
-    box-shadow: var(--glow-red);
-    transform: translateY(-3px);
+    box-shadow: var(--glow-red-strong);
+    transform: translateY(-6px);
 }
-
 .info-card-left {
     flex-direction: row !important;
 }
-
 .info-card-right {
-    flex-direction: row-reverse ;
+    flex-direction: row-reverse !important;
 }
-
 .info-text {
     flex: 1.2;
     display: flex;
@@ -486,74 +479,362 @@
     justify-content: center;
     padding: 0.5rem;
 }
-
 .info-text .info-number {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--f1-red);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     margin-bottom: 0.3rem;
-    opacity: 0.7;
+    opacity: 0.8;
+    text-shadow: 0 0 12px var(--f1-red-glow);
 }
-
 .info-text h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 0.6rem;
     color: var(--text-primary);
 }
-
 .info-text p {
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 0.5rem;
 }
-
 .info-text p:last-child {
     margin-bottom: 0;
 }
-
 .info-image {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    background: rgba(0,0,0,0.3);
-    min-height: 180px;
+    background: rgba(0,0,0,0.4);
+    min-height: 200px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
 }
-
 .info-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-smooth);
 }
-
 .info-card:hover .info-image img {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
-/* Mobil Duyarlılık */
 @media (max-width: 780px) {
     .info-card,
     .info-card-left,
     .info-card-right {
         flex-direction: column !important;
-        padding: 1.2rem;
+        padding: 1.4rem;
     }
-    
     .info-image {
-        min-height: 140px;
+        min-height: 150px;
         width: 100%;
         order: -1;
     }
-    
     .info-text {
         padding: 0;
     }
-    
     .info-text h3 {
         font-size: 1.2rem;
     }
+}
+
+/* ============================================
+   SÜRÜCÜ SIRALAMASI – RESİMDEKİ GİBİ
+   ============================================ */
+
+/* ---- Podyum (ilk 3) – 2-1-3 yan yana ---- */
+.podium-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.driver-card-podium {
+    flex: 1;
+    min-width: 160px;
+    max-width: 220px;
+    background: #0a0a0a;
+    border-radius: 8px;
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    border-top: 4px solid #888;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+/* 1. sıra (ortadaki) biraz daha vurgulu */
+.driver-card-podium:nth-child(2) {
+    border-top-width: 5px;
+    background: #0f0f0f;
+}
+
+.driver-card-pos {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #f0f0f0;
+    line-height: 1.1;
+}
+
+.driver-card-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin-top: 0.2rem;
+}
+
+.driver-card-team {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.driver-card-points {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #e10600;
+    margin-top: 0.3rem;
+}
+
+.driver-card-label {
+    font-size: 0.6rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.driver-card-wins {
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 0.2rem;
+}
+
+/* ---- 4. ve sonrası – alt alta liste ---- */
+.driver-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.driver-card-list {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 1rem;
+    background: #0a0a0a;
+    border-radius: 6px;
+    border-left: 4px solid #888;
+    flex-wrap: wrap;
+    transition: background 0.15s ease;
+}
+
+.driver-card-list:hover {
+    background: #141414;
+}
+
+.driver-list-pos {
+    font-weight: 700;
+    color: #888;
+    min-width: 30px;
+    font-size: 0.85rem;
+}
+
+.driver-list-name {
+    font-weight: 500;
+    color: #f0f0f0;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 120px;
+}
+
+.driver-list-team {
+    font-size: 0.75rem;
+    font-weight: 500;
+    min-width: 90px;
+}
+
+.driver-list-points {
+    font-weight: 700;
+    color: #e10600;
+    font-size: 0.9rem;
+}
+
+.driver-list-label {
+    font-size: 0.6rem;
+    color: #888;
+    text-transform: lowercase;
+    font-weight: 500;
+    margin-left: -0.2rem;
+}
+
+.driver-list-wins {
+    color: #888;
+    font-size: 0.7rem;
+    margin-left: auto;
+}
+
+/* ---- YARIŞ TAKVİMİ KARTLARI ---- */
+.race-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.race-card {
+    background: #0a0a0a;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid #e10600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.race-card:hover {
+    background: #141414;
+    transform: translateY(-3px);
+    border-left-color: #ff2d2d;
+}
+
+.race-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+
+.race-card-round {
+    font-weight: 700;
+    color: #e10600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.race-card-date {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.race-card-name {
+    font-weight: 600;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+}
+
+.race-card-circuit {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.race-card-winner {
+    font-size: 0.75rem;
+    color: #e10600;
+    font-weight: 500;
+    margin-top: 0.2rem;
+    min-height: 1.2rem;
+}
+
+/* ---- Mobil uyum ---- */
+@media (max-width: 580px) {
+    .podium-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .driver-card-podium {
+        max-width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        border-top: none;
+        border-left: 4px solid #888;
+        padding: 0.8rem 1rem;
+        gap: 0.2rem 0.8rem;
+    }
+    .driver-card-podium:nth-child(2) {
+        border-left-width: 5px;
+    }
+    .driver-card-pos {
+        font-size: 1.2rem;
+        min-width: 30px;
+    }
+    .driver-card-name {
+        font-size: 0.9rem;
+    }
+    .driver-card-points {
+        font-size: 1.2rem;
+    }
+    .driver-card-label {
+        font-size: 0.5rem;
+    }
+    .driver-card-wins {
+        font-size: 0.65rem;
+        width: 100%;
+    }
+
+    .driver-card-list {
+        padding: 0.5rem 0.8rem;
+        gap: 0.4rem;
+    }
+    .driver-list-name {
+        font-size: 0.8rem;
+        min-width: 80px;
+    }
+    .driver-list-points {
+        font-size: 0.8rem;
+    }
+    .driver-list-label {
+        font-size: 0.5rem;
+    }
+
+    .race-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Sıralama Kutuları (Sürücü & Takım) --- */
+.standings-box {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem 2rem 2.5rem 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-smooth);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.standings-box:hover {
+    border-color: var(--border-red);
+    box-shadow: var(--glow-red-strong);
+    transform: translateY(-4px);
+}
+
+.standings-box:last-child {
+    margin-bottom: 0;
+}
+
+.standings-box .standings-title {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    margin: 0 0 1.8rem 0.5rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border-red);
+    padding-bottom: 0.6rem;
+    display: inline-block;
 }

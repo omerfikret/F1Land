@@ -24,7 +24,7 @@ async function showRaceDetail(year, round) {
         }
 
         // Sprint kazananı
-        let sprintText = 'Yok';
+        let sprintText = '';
         if (sprint && sprint.length > 0) {
             const winner = sprint[0];
             sprintText = `${winner.Driver?.givenName || ''} ${winner.Driver?.familyName || ''} (${winner.Constructor?.name || ''})`;

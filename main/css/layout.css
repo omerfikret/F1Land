@@ -1,13 +1,12 @@
 /* ============================================
-   LAYOUT — F1LAND PREMIUM
+   LAYOUT — F1LAND v3 (Speed Line Style)
    ============================================ */
 
-/* Sidebar — Cam Efektli */
 .sidebar {
     width: 280px;
-    background: rgba(20, 20, 20, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(12, 12, 12, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
@@ -18,28 +17,43 @@
     flex-shrink: 0;
     overflow-y: auto;
     transition: all var(--transition-smooth);
+    box-shadow: 4px 0 50px rgba(0,0,0,0.5);
+}
+.sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--f1-red), transparent);
+    opacity: 0.3;
 }
 
-/* Brand */
 .sidebar-brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    font-size: 1.8rem;
-    font-weight: 900;
+    gap: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--text-primary);
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--border-subtle);
-    letter-spacing: -0.03em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
-
 .sidebar-brand i {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--f1-red);
-    filter: drop-shadow(0 0 12px rgba(225, 6, 0, 0.3));
+    filter: drop-shadow(0 0 24px var(--f1-red-glow));
+    animation: pulseGlow 2.5s infinite alternate;
 }
-
+@keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 8px var(--f1-red-glow)); }
+    100% { filter: drop-shadow(0 0 32px var(--f1-red-glow)); }
+}
 .sidebar-brand span {
     background: linear-gradient(135deg, #ffffff 0%, var(--f1-red) 100%);
     -webkit-background-clip: text;
@@ -47,57 +61,80 @@
     background-clip: text;
 }
 
-/* Ana İçerik */
 .main-content {
     flex: 1;
-    padding: 2.5rem 3.5rem;
+    padding: 2.8rem 3.8rem;
     background: var(--bg-primary);
     min-height: 100vh;
     transition: all var(--transition-smooth);
+    position: relative;
+}
+.main-content::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(225, 6, 0, 0.02) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(225, 6, 0, 0.015) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+.main-content > * {
+    position: relative;
+    z-index: 1;
 }
 
-/* Sayfa Başlığı */
 .page-header {
     border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    margin-bottom: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
+    position: relative;
 }
-
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--f1-red), transparent);
+    box-shadow: 0 0 40px var(--f1-red-glow);
+}
 .page-header h1 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 900;
     display: flex;
     align-items: center;
     gap: 0.8rem;
     letter-spacing: -0.03em;
 }
-
 .page-header h1 i {
     color: var(--f1-red);
-    font-size: 2rem;
+    font-size: 2.2rem;
+    filter: drop-shadow(0 0 20px var(--f1-red-glow));
 }
 
-/* Grid Sistemleri */
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1.8rem;
     margin-top: 1.5rem;
 }
-
 .grid-3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1.8rem;
     margin-top: 1.5rem;
 }
 
-/* Sidebar Footer */
 .sidebar-footer {
     margin-top: auto;
     font-size: 0.7rem;
