@@ -38,7 +38,6 @@ function loadPage(num) {
         el.classList.toggle('active', page === num);
     });
     if (num === 1) loadPage1();
-    else if (num === 2) loadAbout();
     else if (num === 3) loadHistory();
     else if (num === 4) loadRules();
 }

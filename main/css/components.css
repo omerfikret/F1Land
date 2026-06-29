@@ -20,7 +20,7 @@
     border: 1px solid var(--border-subtle);
     flex-wrap: wrap;
     backdrop-filter: blur(4px);
-    justify-content: center; /* sekmeleri ortala */
+    justify-content: center;
 }
 .page-tab,
 .detail-tab {
@@ -439,141 +439,414 @@
     display: inline-block;
 }
 
-/* ---- Podyum (ilk 3) – 2-1-3 yan yana, büyük ---- */
+/* ============================================
+   SÜRÜCÜ SIRALAMASI – SİYAH TEMA
+   ============================================ */
+
+/* ---- PODYUM KARTLARI (ilk 3, 2-1-3) ---- */
 .podium-grid {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    gap: 1.2rem;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 
 .driver-card-podium {
     flex: 1;
-    min-width: 180px;
-    max-width: 260px;
-    background: #0a0a0a;
+    min-width: 200px;
+    max-width: 280px;
+    background: #0d0d0d;
     border-radius: 12px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    border-top: 5px solid #888;
+    padding: 1.2rem 1rem 1rem 1rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.driver-card-podium:hover {
+    transform: translateY(-6px);
+    background: #141414;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.driver-card-podium-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
+    align-items: flex-start;
+    gap: 0.1rem;
 }
 
-/* 1. sıra (ortadaki) biraz daha vurgulu */
-.driver-card-podium:nth-child(2) {
-    border-top-width: 6px;
-    background: #0f0f0f;
-    transform: scale(1.05);
-}
-
-.driver-card-pos {
-    font-size: 2.4rem;
-    font-weight: 800;
-    color: #f0f0f0;
-    line-height: 1.1;
-}
-
+/* İsim */
 .driver-card-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #f0f0f0;
-    margin-top: 0.2rem;
-}
-
-.driver-card-team {
-    font-size: 0.85rem;
-    font-weight: 500;
-    opacity: 0.9;
-}
-
-.driver-card-points {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: #e10600;
-    margin-top: 0.3rem;
-}
-
-.driver-card-label {
-    font-size: 0.65rem;
-    color: #888;
+    color: #fff;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
+    line-height: 1.2;
 }
 
-.driver-card-wins {
-    font-size: 0.75rem;
+/* Takım */
+.driver-card-team {
+    font-size: 0.8rem;
+    color: #aaa;
+    font-weight: 400;
+    margin-top: -0.1rem;
+}
+
+/* Puan (büyük kırmızı) */
+.driver-card-points {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #e10600;
+    margin-top: 0.6rem;
+    line-height: 1;
+}
+
+/* "POINTS" yazısı */
+.driver-card-points-label {
+    font-size: 0.6rem;
+    color: #555;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: -0.1rem;
+}
+
+/* Ülke kodu (küçük gri kutu) */
+.driver-card-country {
+    font-size: 0.6rem;
+    font-weight: 700;
     color: #888;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.1rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
     margin-top: 0.2rem;
 }
 
-/* ---- 4. ve sonrası – alt alta liste, büyük ---- */
+/* Alt çizgi (kırmızı) */
+.driver-card-bottom-line {
+    width: 100%;
+    height: 2px;
+    background: #e10600;
+    margin-top: 0.8rem;
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+/* ---- Mobil uyum ---- */
+@media (max-width: 700px) {
+    .podium-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .driver-card-podium {
+        max-width: 100%;
+        padding: 0.8rem 1rem;
+    }
+    .driver-card-podium-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.2rem 0.8rem;
+    }
+    .driver-card-name {
+        font-size: 1rem;
+        flex: 1;
+        min-width: 120px;
+    }
+    .driver-card-team {
+        font-size: 0.7rem;
+        width: 100%;
+        margin-top: -0.2rem;
+    }
+    .driver-card-points {
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+    .driver-card-points-label {
+        font-size: 0.5rem;
+    }
+    .driver-card-country {
+        font-size: 0.5rem;
+        padding: 0.05rem 0.4rem;
+    }
+    .driver-card-bottom-line {
+        width: 100%;
+        margin-top: 0.3rem;
+        order: 99;
+    }
+}
+
+/* ---- Mobil uyum ---- */
+@media (max-width: 700px) {
+    .podium-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .driver-card-podium {
+        width: 100%;
+        max-width: 100%;
+        border-top: none;
+        border-left: 4px solid #888;
+        padding: 0.8rem 1rem;
+    }
+    .driver-card-podium-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.2rem 0.8rem;
+    }
+    .driver-card-number-bg {
+        font-size: 2.6rem;
+        position: static;
+        opacity: 0.15;
+        margin-right: 0.3rem;
+    }
+    .driver-card-accent {
+        display: none;
+    }
+    .driver-card-pos-label {
+        position: static;
+        order: -1;
+        font-size: 0.6rem;
+        padding: 0.05rem 0.4rem;
+    }
+    .driver-card-name {
+        font-size: 1rem;
+        margin-top: 0;
+        flex: 1;
+        min-width: 120px;
+    }
+    .driver-card-team {
+        font-size: 0.7rem;
+        width: 100%;
+        margin-top: -0.2rem;
+    }
+    .driver-card-points {
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+    .driver-card-points-label {
+        font-size: 0.5rem;
+    }
+    .driver-card-country {
+        font-size: 0.5rem;
+        padding: 0.05rem 0.4rem;
+    }
+    .driver-card-bottom-line {
+        width: 100%;
+        margin-top: 0.3rem;
+        order: 99;
+    }
+}
+
+/* ---- 4. ve sonrası liste (siyah tema) ---- */
 .driver-list {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem;
     margin-top: 0.5rem;
 }
 
 .driver-card-list {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    padding: 0.8rem 1.4rem;
-    background: #0a0a0a;
-    border-radius: 8px;
-    border-left: 5px solid #888;
-    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.6rem 1.2rem;
+    background: #000;
+    border-radius: 6px;
+    border-left: 4px solid #222;
     transition: background 0.15s ease;
 }
 
 .driver-card-list:hover {
-    background: #141414;
+    background: #0a0a0a;
 }
 
 .driver-list-pos {
     font-weight: 700;
-    color: #888;
-    min-width: 40px;
-    font-size: 1rem;
+    color: #444;
+    min-width: 36px;
+    font-size: 0.9rem;
 }
 
 .driver-list-name {
     font-weight: 500;
-    color: #f0f0f0;
-    font-size: 1.05rem;
+    color: #ccc;
+    font-size: 1rem;
     flex: 1;
-    min-width: 140px;
+    min-width: 120px;
 }
 
 .driver-list-team {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    min-width: 100px;
+    min-width: 80px;
+    color: #888;
 }
 
 .driver-list-points {
     font-weight: 700;
-    color: #e10600;
-    font-size: 1.05rem;
+    color: #888;
+    font-size: 1rem;
+    margin-left: auto;
 }
 
 .driver-list-label {
-    font-size: 0.65rem;
-    color: #888;
+    font-size: 0.6rem;
+    color: #555;
     text-transform: lowercase;
     font-weight: 500;
-    margin-left: -0.2rem;
+    margin-left: 0.2rem;
 }
 
-.driver-list-wins {
-    color: #888;
-    font-size: 0.8rem;
-    margin-left: auto;
+/* ---- Mobil uyum (siyah tema) ---- */
+@media (max-width: 700px) {
+    .podium-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .driver-card-podium {
+        max-width: 100%;
+        border-top: none;
+        border-left: 4px solid #222;
+        padding: 0.8rem 1rem;
+    }
+    .driver-card-podium-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.2rem 0.8rem;
+    }
+    .driver-card-number-bg {
+        font-size: 2.6rem;
+        position: static;
+        opacity: 0.08;
+        margin-right: 0.3rem;
+    }
+    .driver-card-accent {
+        display: none;
+    }
+    .driver-card-name {
+        font-size: 1rem;
+        margin-top: 0;
+        flex: 1;
+        min-width: 120px;
+    }
+    .driver-card-team {
+        font-size: 0.7rem;
+        width: 100%;
+        margin-top: -0.2rem;
+    }
+    .driver-card-points {
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+    .driver-card-points-label {
+        font-size: 0.5rem;
+    }
+    .driver-card-country {
+        font-size: 0.5rem;
+        padding: 0.05rem 0.4rem;
+    }
+    .driver-card-bottom-line {
+        width: 100%;
+        margin-top: 0.3rem;
+        order: 99;
+    }
+
+    .driver-card-list {
+        padding: 0.4rem 0.8rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .driver-list-name {
+        font-size: 0.85rem;
+        min-width: 80px;
+    }
+    .driver-list-points {
+        font-size: 0.85rem;
+        margin-left: 0;
+    }
+}
+.driver-list-label {
+    font-size: 0.6rem;
+    color: #666;
+    text-transform: lowercase;
+    font-weight: 500;
+    margin-left: 0.2rem;
+}
+
+/* ---- Mobil uyum ---- */
+@media (max-width: 700px) {
+    .podium-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .driver-card-podium {
+        max-width: 100%;
+        border-top: none;
+        border-left: 4px solid #888;
+        padding: 0.8rem 1rem;
+    }
+    .driver-card-podium-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.2rem 0.8rem;
+    }
+    .driver-card-number-bg {
+        font-size: 2.6rem;
+        position: static;
+        opacity: 0.15;
+        margin-right: 0.3rem;
+    }
+    .driver-card-accent {
+        display: none;
+    }
+    .driver-card-name {
+        font-size: 1rem;
+        margin-top: 0;
+        flex: 1;
+        min-width: 120px;
+    }
+    .driver-card-team {
+        font-size: 0.7rem;
+        width: 100%;
+        margin-top: -0.2rem;
+    }
+    .driver-card-points {
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+    .driver-card-points-label {
+        font-size: 0.5rem;
+    }
+    .driver-card-country {
+        font-size: 0.5rem;
+        padding: 0.05rem 0.4rem;
+    }
+    .driver-card-bottom-line {
+        width: 100%;
+        margin-top: 0.3rem;
+        order: 99;
+    }
+
+    .driver-card-list {
+        padding: 0.4rem 0.8rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .driver-list-name {
+        font-size: 0.85rem;
+        min-width: 80px;
+    }
+    .driver-list-points {
+        font-size: 0.85rem;
+        margin-left: 0;
+    }
 }
 
 /* ---- YARIŞ TAKVİMİ KARTLARI (tam genişlik, büyük) ---- */
@@ -638,65 +911,6 @@
     font-weight: 500;
     margin-top: 0.2rem;
     min-height: 1.4rem;
-}
-
-/* ---- Mobil uyum (sadece küçük ekranlar için) ---- */
-@media (max-width: 580px) {
-    .podium-grid {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .driver-card-podium {
-        max-width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-        border-top: none;
-        border-left: 5px solid #888;
-        padding: 0.8rem 1rem;
-        gap: 0.2rem 0.8rem;
-    }
-    .driver-card-podium:nth-child(2) {
-        border-left-width: 6px;
-        transform: scale(1);
-    }
-    .driver-card-pos {
-        font-size: 1.4rem;
-        min-width: 30px;
-    }
-    .driver-card-name {
-        font-size: 1rem;
-    }
-    .driver-card-points {
-        font-size: 1.4rem;
-    }
-    .driver-card-label {
-        font-size: 0.55rem;
-    }
-    .driver-card-wins {
-        font-size: 0.7rem;
-        width: 100%;
-    }
-
-    .driver-card-list {
-        padding: 0.5rem 0.8rem;
-        gap: 0.4rem;
-    }
-    .driver-list-name {
-        font-size: 0.9rem;
-        min-width: 80px;
-    }
-    .driver-list-points {
-        font-size: 0.9rem;
-    }
-    .driver-list-label {
-        font-size: 0.55rem;
-    }
-
-    .race-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* ---- YENİ TAKVİM KARTLARI (Siyah Dikdörtgen) ---- */
@@ -786,3 +1000,187 @@
     }
 }
 
+/* ============================================
+   YENİ TAKVİM TABLOSU (prompttaki gibi)
+   ============================================ */
+
+.race-table {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 1rem;
+}
+
+/* Her satır */
+.race-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #0a0a0a;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.race-row:hover {
+    background: #141414;
+    transform: translateX(4px);
+}
+
+/* Vurgulu satır (NEXT) */
+.race-row-next {
+    border-left-color: #e10600;
+    background: rgba(225, 6, 0, 0.06);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.05);
+}
+
+.race-row-next .race-name {
+    color: #fff;
+}
+
+/* Sütunlar */
+.race-col {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.round {
+    font-weight: 700;
+    color: #888;
+    min-width: 40px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.code {
+    min-width: 50px;
+}
+
+.country-code {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #bbb;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.name {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+    min-width: 150px;
+}
+
+.race-name {
+    font-weight: 600;
+    color: #ddd;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.race-location {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.date {
+    min-width: 80px;
+    color: #aaa;
+    font-size: 0.9rem;
+    gap: 0.4rem;
+}
+
+.date i {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.status {
+    min-width: 120px;
+    justify-content: flex-end;
+    font-weight: 600;
+    color: #e10600;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.status i {
+    color: #e10600;
+    font-size: 0.85rem;
+}
+
+/* "NEXT" rozeti */
+.next-badge {
+    background: #e10600;
+    color: #fff;
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 0.1rem 0.6rem;
+    border-radius: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: 0.2rem;
+    box-shadow: 0 0 16px rgba(225, 6, 0, 0.3);
+}
+
+/* FULL CALENDAR butonu */
+.full-calendar-btn {
+    text-align: right;
+    margin-top: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+.full-calendar-btn span {
+    color: #888;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.full-calendar-btn span:hover {
+    color: #fff;
+}
+
+/* Mobil uyum (tablo için) */
+@media (max-width: 700px) {
+    .race-row {
+        flex-wrap: wrap;
+        padding: 0.7rem 1rem;
+        gap: 0.4rem;
+    }
+    .name {
+        flex-basis: 100%;
+        order: 2;
+    }
+    .round, .code {
+        order: 1;
+    }
+    .date {
+        order: 3;
+        margin-left: auto;
+    }
+    .status {
+        order: 4;
+        flex-basis: 100%;
+        justify-content: flex-start;
+        padding-top: 0.2rem;
+        border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .race-name {
+        font-size: 0.9rem;
+    }
+    .race-location {
+        font-size: 0.7rem;
+    }
+}
