@@ -1,89 +1,142 @@
 /* ============================================
-   YARIŞ DETAYI - pole, sprint, sonuçlar
+   YARIŞ DETAY SAYFASI (Sekmeli: Sıralama, Sprint, Yarış)
    ============================================ */
 
-async function showRaceDetail(year, round) {
-    const container = document.getElementById('raceDetailContainer');
-    if (!container) return;
-    container.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-pulse"></i> Yarış detayı yükleniyor...</div>`;
-
+async function loadRaceDetailPage(year, round) {
+    showLoading(`${year} Round ${round} detayları yükleniyor...`);
     try {
         const data = await fetchRaceDetails(year, round);
         if (!data) {
-            container.innerHTML = `<p style="color:#888;">Bu yarış için veri bulunamadı.</p>`;
+            showError('Yarış detayı alınamadı.');
             return;
         }
 
-        const { race, results, qualifying, sprint, pitstops } = data;
+        const { race, results, qualifying, sprint } = data;
 
-        // Pole sürücüsü
-        let poleText = '-';
-        if (qualifying && qualifying.length > 0) {
-            const pole = qualifying[0];
-            poleText = `${pole.Driver?.givenName || ''} ${pole.Driver?.familyName || ''} (${pole.Constructor?.name || ''})`;
-        }
-
-        // Sprint kazananı
-        let sprintText = '';
-        if (sprint && sprint.length > 0) {
-            const winner = sprint[0];
-            sprintText = `${winner.Driver?.givenName || ''} ${winner.Driver?.familyName || ''} (${winner.Constructor?.name || ''})`;
-        }
-
-        // Sonuçları sırala
-        const sortedResults = [...results].sort((a, b) => (parseInt(a.position) || 999) - (parseInt(b.position) || 999));
-
-        container.innerHTML = `
-            <div class="race-detail">
-                <h3 style="color:#e60000;margin-bottom:1rem;">
-                    <i class="fas fa-flag-checkered"></i> ${race.raceName || 'Yarış'} — Detay
-                </h3>
-                <div style="display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:1rem;">
-                    <div><strong>🏁 Pole:</strong> ${poleText}</div>
-                    <div><strong>⚡ Sprint Kazananı:</strong> ${sprintText}</div>
+        // Ana sayfa içeriğini tamamen değiştir
+        DOM.mainContent.innerHTML = `
+            <div class="page-header">
+                <h1><i class="fas fa-flag-checkered"></i> ${race.raceName || `Round ${round}`}</h1>
+                <button class="sync-btn" onclick="loadPage(1)" style="background:transparent; border:1px solid var(--border-subtle); color:var(--text-secondary); padding:0.4rem 1.2rem;">
+                    <i class="fas fa-arrow-left"></i> Takvime Dön
+                </button>
+            </div>
+            <div class="standings-box" style="padding-bottom:1rem;">
+                <div class="detail-tabs" id="detailTabs">
+                    <button class="detail-tab active" data-tab="qualifying">Sıralama</button>
+                    ${sprint && sprint.length ? `<button class="detail-tab" data-tab="sprint">Sprint</button>` : ''}
+                    <button class="detail-tab" data-tab="race">Yarış</button>
                 </div>
+                <div id="detailContent">
+                    <!-- İçerik buraya gelecek -->
+                </div>
+            </div>
+        `;
 
-                ${sortedResults.length ? `
-                    <h4 style="color:#888;margin-bottom:.5rem;">🏁 Sonuçlar</h4>
-                    ${tableWrap(`
-                        <thead>
-                            <tr>
-                                <th>Poz</th><th>Sürücü</th>
-                                <th>Takım</th><th>Tur</th><th>Puan</th>
-                            </tr>
-                        </thead>
-                        <tbody>${sortedResults.slice(0, 20).map(r => `
-                            <tr>
-                                <td class="pos">${r.position || '-'}</td>
-                                <td>${r.Driver?.givenName || ''} ${r.Driver?.familyName || ''}</td>
-                                <td>${r.Constructor?.name || '-'}</td>
-                                <td>${r.laps || '-'}</td>
-                                <td>${r.points || 0}</td>
-                            </tr>
-                        `).join('')}</tbody>
-                    `)}
-                ` : '<p style="color:#888;">Sonuç verisi yok.</p>'}
+        // Sekme tıklama olaylarını bağla
+        document.querySelectorAll('#detailTabs .detail-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('#detailTabs .detail-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const tabName = this.dataset.tab;
+                renderDetailTab(tabName, { race, results, qualifying, sprint });
+            });
+        });
 
-                ${pitstops.length ? `
-                    <h4 style="color:#888;margin:1.5rem 0 .5rem;">⛽ Pit Stop</h4>
-                    ${tableWrap(`
-                        <thead>
-                            <tr><th>Sürücü</th><th>Stop</th><th>Tur</th><th>Süre</th></tr>
-                        </thead>
-                        <tbody>${pitstops.slice(0, 20).map(p => `
-                            <tr>
-                                <td>${p.driverId || '-'}</td>
-                                <td>${p.stop || '-'}</td>
-                                <td>${p.lap || '-'}</td>
-                                <td>${p.duration || '-'}s</td>
-                            </tr>
-                        `).join('')}</tbody>
-                    `)}
-                ` : ''}
-            </div>`;
+        // İlk sekmeyi göster (qualifying)
+        renderDetailTab('qualifying', { race, results, qualifying, sprint });
 
-        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setStatus('Detay yüklendi', 'success');
     } catch (e) {
-        container.innerHTML = `<p style="color:#cc0000;">Detay hatası: ${e.message}</p>`;
+        showError(`Detay hatası: ${e.message}`);
     }
 }
+
+function renderDetailTab(tabName, data) {
+    const container = document.getElementById('detailContent');
+    if (!container) return;
+
+    const { race, results, qualifying, sprint } = data;
+
+    if (tabName === 'qualifying') {
+        if (!qualifying || qualifying.length === 0) {
+            container.innerHTML = `<p style="color:#888;">Sıralama verisi yok.</p>`;
+            return;
+        }
+        const sorted = [...qualifying].sort((a,b) => (parseInt(a.position)||999) - (parseInt(b.position)||999));
+        container.innerHTML = `
+            <h4 style="color:#888;margin-bottom:0.5rem;">Sıralama Turları</h4>
+            ${tableWrap(`
+                <thead>
+                    <tr><th>Poz</th><th>Sürücü</th><th>Takım</th><th>Q1</th><th>Q2</th><th>Q3</th></tr>
+                </thead>
+                <tbody>
+                    ${sorted.map(q => `
+                        <tr>
+                            <td class="pos">${q.position || '-'}</td>
+                            <td>${q.Driver?.givenName || ''} ${q.Driver?.familyName || ''}</td>
+                            <td>${q.Constructor?.name || '-'}</td>
+                            <td>${q.Q1 || '-'}</td>
+                            <td>${q.Q2 || '-'}</td>
+                            <td>${q.Q3 || '-'}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `)}
+        `;
+    } else if (tabName === 'sprint') {
+        if (!sprint || sprint.length === 0) {
+            container.innerHTML = `<p style="color:#888;">Sprint verisi yok.</p>`;
+            return;
+        }
+        const sorted = [...sprint].sort((a,b) => (parseInt(a.position)||999) - (parseInt(b.position)||999));
+        container.innerHTML = `
+            <h4 style="color:#888;margin-bottom:0.5rem;">Sprint Sonuçları</h4>
+            ${tableWrap(`
+                <thead>
+                    <tr><th>Poz</th><th>Sürücü</th><th>Takım</th><th>Tur</th><th>Puan</th></tr>
+                </thead>
+                <tbody>
+                    ${sorted.map(s => `
+                        <tr>
+                            <td class="pos">${s.position || '-'}</td>
+                            <td>${s.Driver?.givenName || ''} ${s.Driver?.familyName || ''}</td>
+                            <td>${s.Constructor?.name || '-'}</td>
+                            <td>${s.laps || '-'}</td>
+                            <td>${s.points || 0}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `)}
+        `;
+    } else if (tabName === 'race') {
+        if (!results || results.length === 0) {
+            container.innerHTML = `<p style="color:#888;">Yarış sonucu verisi yok.</p>`;
+            return;
+        }
+        const sorted = [...results].sort((a,b) => (parseInt(a.position)||999) - (parseInt(b.position)||999));
+        container.innerHTML = `
+            <h4 style="color:#888;margin-bottom:0.5rem;">Yarış Sonuçları</h4>
+            ${tableWrap(`
+                <thead>
+                    <tr><th>Poz</th><th>Sürücü</th><th>Takım</th><th>Tur</th><th>Puan</th><th>Durum</th></tr>
+                </thead>
+                <tbody>
+                    ${sorted.map(r => `
+                        <tr>
+                            <td class="pos">${r.position || '-'}</td>
+                            <td>${r.Driver?.givenName || ''} ${r.Driver?.familyName || ''}</td>
+                            <td>${r.Constructor?.name || '-'}</td>
+                            <td>${r.laps || '-'}</td>
+                            <td>${r.points || 0}</td>
+                            <td>${r.status || '-'}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `)}
+        `;
+    }
+}
+
+// Global'e ekle (page1.js'den çağırmak için)
+window.loadRaceDetailPage = loadRaceDetailPage;

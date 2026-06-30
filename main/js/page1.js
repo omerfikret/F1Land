@@ -265,9 +265,6 @@ async function renderRaceCalendar() {
                 countryCode = map[raw] || raw.substring(0, 3).toUpperCase();
             }
 
-            let statusText = winner || 'Upcoming';
-            let statusIcon = winner ? 'fa-trophy' : 'fa-clock';
-
             html += `
                 <div class="race-row ${isNext ? 'race-row-next' : ''}" data-round="${round}">
                     <div class="race-col round">${roundFormatted}</div>
@@ -282,7 +279,7 @@ async function renderRaceCalendar() {
                         <i class="fas fa-calendar-alt"></i> ${dateStr}
                     </div>
                     <div class="race-col status">
-                        <i class="fas ${statusIcon}"></i> ${statusText}
+                        ${winner ? `<i class="fas fa-trophy"></i> ${winner}` : ''}
                         ${isNext ? '<span class="next-badge">NEXT</span>' : ''}
                     </div>
                 </div>
@@ -292,7 +289,7 @@ async function renderRaceCalendar() {
         html += `
                 </div>
                 <div class="full-calendar-btn">
-                    <span>FULL CALENDAR →</span>
+                    <span></span>
                 </div>
             </div>
             <div id="raceDetailContainer"></div>
@@ -303,7 +300,7 @@ async function renderRaceCalendar() {
                 el.addEventListener('click', function() {
                     const round = this.dataset.round;
                     if (round) {
-                        showRaceDetail(selectedYear, round);
+                        loadRaceDetailPage(selectedYear, round);
                     }
                 });
             });

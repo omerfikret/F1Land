@@ -1132,26 +1132,6 @@
     box-shadow: 0 0 16px rgba(225, 6, 0, 0.3);
 }
 
-/* FULL CALENDAR butonu */
-.full-calendar-btn {
-    text-align: right;
-    margin-top: 1.5rem;
-    padding-right: 0.5rem;
-}
-
-.full-calendar-btn span {
-    color: #888;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.full-calendar-btn span:hover {
-    color: #fff;
-}
-
 /* Mobil uyum (tablo için) */
 @media (max-width: 700px) {
     .race-row {
