@@ -579,69 +579,6 @@
     }
 }
 
-/* ---- Mobil uyum ---- */
-@media (max-width: 700px) {
-    .podium-grid {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .driver-card-podium {
-        width: 100%;
-        max-width: 100%;
-        border-top: none;
-        border-left: 4px solid #888;
-        padding: 0.8rem 1rem;
-    }
-    .driver-card-podium-inner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.2rem 0.8rem;
-    }
-    .driver-card-number-bg {
-        font-size: 2.6rem;
-        position: static;
-        opacity: 0.15;
-        margin-right: 0.3rem;
-    }
-    .driver-card-accent {
-        display: none;
-    }
-    .driver-card-pos-label {
-        position: static;
-        order: -1;
-        font-size: 0.6rem;
-        padding: 0.05rem 0.4rem;
-    }
-    .driver-card-name {
-        font-size: 1rem;
-        margin-top: 0;
-        flex: 1;
-        min-width: 120px;
-    }
-    .driver-card-team {
-        font-size: 0.7rem;
-        width: 100%;
-        margin-top: -0.2rem;
-    }
-    .driver-card-points {
-        font-size: 1.8rem;
-        margin-top: 0;
-    }
-    .driver-card-points-label {
-        font-size: 0.5rem;
-    }
-    .driver-card-country {
-        font-size: 0.5rem;
-        padding: 0.05rem 0.4rem;
-    }
-    .driver-card-bottom-line {
-        width: 100%;
-        margin-top: 0.3rem;
-        order: 99;
-    }
-}
-
 /* ---- 4. ve sonrası liste (siyah tema) ---- */
 .driver-list {
     display: flex;
@@ -700,153 +637,6 @@
     text-transform: lowercase;
     font-weight: 500;
     margin-left: 0.2rem;
-}
-
-/* ---- Mobil uyum (siyah tema) ---- */
-@media (max-width: 700px) {
-    .podium-grid {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .driver-card-podium {
-        max-width: 100%;
-        border-top: none;
-        border-left: 4px solid #222;
-        padding: 0.8rem 1rem;
-    }
-    .driver-card-podium-inner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.2rem 0.8rem;
-    }
-    .driver-card-number-bg {
-        font-size: 2.6rem;
-        position: static;
-        opacity: 0.08;
-        margin-right: 0.3rem;
-    }
-    .driver-card-accent {
-        display: none;
-    }
-    .driver-card-name {
-        font-size: 1rem;
-        margin-top: 0;
-        flex: 1;
-        min-width: 120px;
-    }
-    .driver-card-team {
-        font-size: 0.7rem;
-        width: 100%;
-        margin-top: -0.2rem;
-    }
-    .driver-card-points {
-        font-size: 1.8rem;
-        margin-top: 0;
-    }
-    .driver-card-points-label {
-        font-size: 0.5rem;
-    }
-    .driver-card-country {
-        font-size: 0.5rem;
-        padding: 0.05rem 0.4rem;
-    }
-    .driver-card-bottom-line {
-        width: 100%;
-        margin-top: 0.3rem;
-        order: 99;
-    }
-
-    .driver-card-list {
-        padding: 0.4rem 0.8rem;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-    .driver-list-name {
-        font-size: 0.85rem;
-        min-width: 80px;
-    }
-    .driver-list-points {
-        font-size: 0.85rem;
-        margin-left: 0;
-    }
-}
-.driver-list-label {
-    font-size: 0.6rem;
-    color: #666;
-    text-transform: lowercase;
-    font-weight: 500;
-    margin-left: 0.2rem;
-}
-
-/* ---- Mobil uyum ---- */
-@media (max-width: 700px) {
-    .podium-grid {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .driver-card-podium {
-        max-width: 100%;
-        border-top: none;
-        border-left: 4px solid #888;
-        padding: 0.8rem 1rem;
-    }
-    .driver-card-podium-inner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.2rem 0.8rem;
-    }
-    .driver-card-number-bg {
-        font-size: 2.6rem;
-        position: static;
-        opacity: 0.15;
-        margin-right: 0.3rem;
-    }
-    .driver-card-accent {
-        display: none;
-    }
-    .driver-card-name {
-        font-size: 1rem;
-        margin-top: 0;
-        flex: 1;
-        min-width: 120px;
-    }
-    .driver-card-team {
-        font-size: 0.7rem;
-        width: 100%;
-        margin-top: -0.2rem;
-    }
-    .driver-card-points {
-        font-size: 1.8rem;
-        margin-top: 0;
-    }
-    .driver-card-points-label {
-        font-size: 0.5rem;
-    }
-    .driver-card-country {
-        font-size: 0.5rem;
-        padding: 0.05rem 0.4rem;
-    }
-    .driver-card-bottom-line {
-        width: 100%;
-        margin-top: 0.3rem;
-        order: 99;
-    }
-
-    .driver-card-list {
-        padding: 0.4rem 0.8rem;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-    .driver-list-name {
-        font-size: 0.85rem;
-        min-width: 80px;
-    }
-    .driver-list-points {
-        font-size: 0.85rem;
-        margin-left: 0;
-    }
 }
 
 /* ---- YARIŞ TAKVİMİ KARTLARI (tam genişlik, büyük) ---- */
@@ -1118,18 +908,30 @@
     font-size: 0.85rem;
 }
 
-/* "NEXT" rozeti */
+/* "NEXT" rozeti - BÜYÜTÜLDÜ */
 .next-badge {
     background: #e10600;
     color: #fff;
-    font-size: 0.55rem;
+    font-size: 0.8rem;          /* 0.55rem → 0.8rem */
     font-weight: 700;
-    padding: 0.1rem 0.6rem;
-    border-radius: 12px;
+    padding: 0.2rem 0.8rem;      /* 0.1rem 0.6rem → 0.2rem 0.8rem */
+    border-radius: 16px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-left: 0.2rem;
-    box-shadow: 0 0 16px rgba(225, 6, 0, 0.3);
+    box-shadow: 0 0 24px rgba(225, 6, 0, 0.4);
+}
+
+/* "Upcoming" yazısı - küçük font */
+.upcoming-text {
+    font-size: 0.6rem;
+    color: #aaa;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.05rem 0.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* Mobil uyum (tablo için) */
@@ -1162,5 +964,200 @@
     }
     .race-location {
         font-size: 0.7rem;
+    }
+    .next-badge {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.6rem;
+    }
+}
+
+/* ============================================
+   NEXT RACE KARTI
+   ============================================ */
+
+.next-race-card {
+    display: flex;
+    align-items: stretch;
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;   /* biraz daha boşluk */
+    border: 1px solid var(--border-red);
+    box-shadow: var(--glow-red-strong);
+    transition: all var(--transition-smooth);
+    backdrop-filter: blur(12px);
+    min-height: 240px;        /* 180px → 240px */
+}
+
+.next-race-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 60px rgba(225, 6, 0, 0.25);
+}
+
+.next-race-image {
+    flex: 0 0 720px;
+    overflow: hidden;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-race-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-smooth);
+}
+
+.next-race-card:hover .next-race-image img {
+    transform: scale(1.05);
+}
+
+.next-race-info {
+    flex: 1;
+    padding: 1.8rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    /* ekle: tüm içeriği yatayda ortalar */
+    gap: 0.4rem;
+    text-align: center;    /* metinleri ortalar */
+}
+
+.next-race-badge {
+    display: inline-block;
+    background: var(--f1-red);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 1rem;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: fit-content;
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+}
+
+.next-race-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.next-race-circuit {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.next-race-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+.next-race-date i {
+    color: var(--f1-red);
+    margin-right: 0.3rem;
+}
+
+/* --- GERİ SAYIM (Dijital Saat) --- */
+.next-race-countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* ekle */
+    gap: 0.8rem;              /* biraz daha aralık */
+    margin-top: 0.8rem;
+    font-family: 'Oswald', monospace;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.next-race-countdown span {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;   /* padding artırıldı */
+    font-size: 2.4rem;        /* 1.6rem → 2.4rem */
+    min-width: 70px;          /* 50px → 70px */
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: var(--f1-red);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.08);
+}
+
+.next-race-countdown .countdown-days,
+.next-race-countdown .countdown-hours,
+.next-race-countdown .countdown-minutes,
+.next-race-countdown .countdown-seconds {
+    color: var(--f1-red);
+}
+
+.next-race-countdown .countdown-days + .countdown-label,
+.next-race-countdown .countdown-hours + .countdown-label,
+.next-race-countdown .countdown-minutes + .countdown-label,
+.next-race-countdown .countdown-seconds + .countdown-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-left: -0.3rem;
+}
+
+.countdown-finished {
+    color: #4caf50;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* --- Mobil Uyum --- */
+@media (max-width: 780px) {
+    .next-race-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .next-race-image {
+        flex: 0 0 160px;
+        width: 100%;
+    }
+    .next-race-image img {
+        height: 160px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .next-race-info {
+        padding: 1.2rem 1.5rem;
+    }
+    .next-race-name {
+        font-size: 1.3rem;
+    }
+    .next-race-countdown span {
+        font-size: 1.2rem;
+        min-width: 38px;
+        padding: 0.1rem 0.4rem;
+    }
+    .next-race-countdown {
+        gap: 0.3rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .next-race-image {
+        flex: 0 0 120px;
+    }
+    .next-race-image img {
+        height: 120px;
+    }
+    .next-race-info {
+        padding: 0.8rem 1rem;
+    }
+    .next-race-name {
+        font-size: 1rem;
+    }
+    .next-race-countdown span {
+        font-size: 1rem;
+        min-width: 30px;
     }
 }

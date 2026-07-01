@@ -58,11 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activePage === 1) loadPage1();
     });
 
-    DOM.syncBtn.addEventListener('click', function() {
-        this.disabled = true;
-        loadPage(activePage);
-        setTimeout(() => { this.disabled = false; }, 400);
-    });
+    // syncBtn click olayı kaldırıldı
 });
 
 window.loadSeasons = loadSeasons;
